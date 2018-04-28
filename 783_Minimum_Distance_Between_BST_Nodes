@@ -1,0 +1,36 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def minDiffInBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+
+        def tranverse(root, vals):
+            if root == None:
+                return
+            vals.append(root.val)
+            if root.left != None:
+                tranverse(root.left, vals)
+            if root.right != None:
+                tranverse(root.right, vals)
+            return
+
+        vals = []
+        tranverse(root, vals)
+        vals.sort()
+        res = sys.maxsize
+        for i in range(len(vals) - 1):
+            if res > vals[i + 1] - vals[i]:
+                res = vals[i + 1] - vals[i]
+        if res == sys.maxsize:
+            return 0
+        else:
+            return res
+

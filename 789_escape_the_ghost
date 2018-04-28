@@ -1,0 +1,13 @@
+class Solution(object):
+    def escapeGhosts(self, ghosts, target):
+        """
+        :type ghosts: List[List[int]]
+        :type target: List[int]
+        :rtype: bool
+        """
+        distance = abs(target[0]) + abs(target[1])
+        for index, val in enumerate(ghosts):
+            d = abs(val[0] - target[0]) + abs(val[1] - target[1])
+            if d <= distance:
+                return False
+        return True
