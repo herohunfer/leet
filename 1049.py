@@ -1,8 +1,10 @@
 # amazing to see using set like this.
 def lastStoneWeightII(self, A):
+    # Notice: initialize set(), if no element dp ={} then its a dict
     dp = {0}
     sumA = sum(A)
     for a in A:
+        # use union() operator for sets
         dp |= {a + i for i in dp}
     return min(abs(sumA - i - i) for i in dp)
 
