@@ -6,8 +6,6 @@ class Solution:
                     while j  > i and A[j] == A[j-1]:
                         j -= 1
                     if A[i]> A[j]:
-                        temp = A[j]
-                        A[j] = A[i]
-                        A[i] = temp
+                        A[i], A[j] = A[j], A[i]
                         return A
         return A
